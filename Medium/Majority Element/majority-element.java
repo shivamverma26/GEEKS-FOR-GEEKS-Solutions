@@ -1,58 +1,92 @@
-//{ Driver Code Starts
-//Initial Template for Java
 
-import java.util.*;
-import java.io.*;
-import java.lang.*;
+## 1. Brute Force Algorithm
 
-class Geeks
-{
-    public static void main(String args[])
-    {
-        Scanner sc = new Scanner(System.in);
-        int t = sc.nextInt();
-        
-        while(t-- > 0)
-        {
-            int n =sc.nextInt();
-            int arr[] = new int[n];
-            
-            for(int i = 0; i < n; i++)
-             arr[i] = sc.nextInt();
-             
-           System.out.println(new Solution().majorityElement(arr, n)); 
+```java
+public class MajorityElement {
+    // Brute force approach
+    public static int majorityElementBruteForce(int[] nums) {
+        int n = nums.length;
+        // Iterate through each element in the array
+        for (int i = 0; i < n; i++) {
+            int count = 0;
+            // Count the occurrences of the current element
+            for (int j = 0; j < n; j++) {
+                if (nums[j] == nums[i]) {
+                    count++;
+                }
+            }
+            // Check if the count exceeds half the array length
+            if (count > n / 2) {
+                return nums[i]; // Return the majority element
+            }
         }
+        return -1; // No majority element found
+    }
+
+    public static void main(String[] args) {
+        int[] nums = {3, 3, 4, 2, 4, 4, 2, 4, 4};
+        System.out.println("Majority Element (Brute Force): " + majorityElementBruteForce(nums));
     }
 }
-// } Driver Code Ends
 
+## 2.Better Algorithm (Sorting)
 
-//User function Template for Java
+```java
+import java.util.Arrays;
 
-class Solution {
-    static int majorityElement(int a[], int size) {
-        int ansIndex = 0;
-        int count = 1;
-        for (int i = 1; i < size; i++) {
-            if (a[ansIndex] == a[i]) {
+public class MajorityElement {
+    // Better approach using sorting
+    public static int majorityElementBetter(int[] nums) {
+        Arrays.sort(nums); // Sort the array
+        int mid = nums.length / 2; // Find the middle index
+        int candidate = nums[mid]; // Candidate for majority element
+        int count = 0;
+        // Count occurrences of the candidate element
+        for (int num : nums) {
+            if (num == candidate) {
                 count++;
-            } else if (count == 0) {
-                ansIndex = i;
-                count = 1;
-            } else {
-                count--;
             }
         }
-        int res = 0;
-        for (int i = 0; i < size; i++) {
-            if (a[ansIndex] == a[i]) {
-                res++;
-            }
-        }
-        if (res > (size / 2)) {
-            return a[ansIndex];
-        } else {
-            return -1;
-        }
+        return count > nums.length / 2 ? candidate : -1; // Return majority element if found
+    }
+
+    public static void main(String[] args) {
+        int[] nums = {3, 3, 4, 2, 4, 4, 2, 4, 4};
+        System.out.println("Majority Element (Better): " + majorityElementBetter(nums));
     }
 }
+
+## 3.Optimal Algorithm (Moore's Voting Algorithm)
+
+```java
+public class MajorityElement {
+    // Optimal approach using Moore's Voting Algorithm
+    public static int majorityElement(int[] nums) {
+        int count = 0;
+        Integer candidate = null;
+
+        // Finding the potential candidate
+        for (int num : nums) {
+            if (count == 0) {
+                candidate = num;
+            }
+            count += (num == candidate) ? 1 : -1;
+        }
+
+        // Verifying the candidate
+        count = 0;
+        for (int num : nums) {
+            if (num == candidate) {
+                count++;
+            }
+        }
+
+        return count > nums.length / 2 ? candidate : -1; // Return majority element if found
+    }
+
+    public static void main(String[] args) {
+        int[] nums = {3, 3, 4, 2, 4, 4, 2, 4, 4};
+        System.out.println("Majority Element (Optimal): " + majorityElement(nums));
+    }
+}
+
