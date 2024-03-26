@@ -1,5 +1,5 @@
 
-## 1. Brute Force Algorithm
+# 1. Brute Force Algorithm
 
 public class MajorityElement {
     // Brute force approach
@@ -28,7 +28,7 @@ public class MajorityElement {
     }
 }
 
-## 2.Better Algorithm (Sorting)
+# 2.Better Algorithm (Sorting)
 
 import java.util.Arrays;
 
@@ -54,7 +54,7 @@ public class MajorityElement {
     }
 }
 
-## 3.Optimal Algorithm (Moore's Voting Algorithm)
+# 3.Optimal Algorithm (Moore's Voting Algorithm)
 
 public class MajorityElement {
     // Optimal approach using Moore's Voting Algorithm
