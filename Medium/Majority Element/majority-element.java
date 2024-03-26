@@ -28,8 +28,11 @@ public class MajorityElement {
     }
 }
 
+
+
 Better Algorithm (Sorting)
 
+    
 import java.util.Arrays;
 
 public class MajorityElement {
@@ -54,7 +57,11 @@ public class MajorityElement {
     }
 }
 
+
+
+
 Optimal Algorithm (Moore's Voting Algorithm)
+    
 
 public class MajorityElement {
     // Optimal approach using Moore's Voting Algorithm
