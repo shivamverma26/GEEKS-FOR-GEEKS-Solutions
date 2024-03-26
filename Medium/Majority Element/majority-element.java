@@ -1,7 +1,6 @@
 
 ## 1. Brute Force Algorithm
 
-```java
 public class MajorityElement {
     // Brute force approach
     public static int majorityElementBruteForce(int[] nums) {
@@ -31,7 +30,6 @@ public class MajorityElement {
 
 ## 2.Better Algorithm (Sorting)
 
-```java
 import java.util.Arrays;
 
 public class MajorityElement {
@@ -58,7 +56,6 @@ public class MajorityElement {
 
 ## 3.Optimal Algorithm (Moore's Voting Algorithm)
 
-```java
 public class MajorityElement {
     // Optimal approach using Moore's Voting Algorithm
     public static int majorityElement(int[] nums) {
