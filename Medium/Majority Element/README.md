@@ -24,3 +24,14 @@ the majority element.</span>
 <p><br><span style="font-size: 18px;"><strong>Your Task:</strong><br>The task is to complete the function <strong>majorityElement</strong>() which returns&nbsp;the majority element in the array. If no majority exists, return -1.</span><br>&nbsp;</p>
 <p><span style="font-size: 18px;"><strong>Expected Time Complexity:</strong>&nbsp;O(N).<br><strong>Expected Auxiliary Space:</strong>&nbsp;O(1).</span><br>&nbsp;</p>
 <p><span style="font-size: 18px;"><strong>Constraints:</strong><br>1 ≤ N ≤ 10<sup>7</sup><br>0 ≤ A<sub>i</sub> ≤ 10<sup>6</sup></span></p></div><p><span style=font-size:18px><strong>Company Tags : </strong><br><code>Flipkart</code>&nbsp;<code>Accolite</code>&nbsp;<code>Amazon</code>&nbsp;<code>Microsoft</code>&nbsp;<code>D-E-Shaw</code>&nbsp;<code>Google</code>&nbsp;<code>Nagarro</code>&nbsp;<code>Atlassian</code>&nbsp;<br><p><span style=font-size:18px><strong>Topic Tags : </strong><br><code>Arrays</code>&nbsp;<code>Searching</code>&nbsp;<code>Greedy</code>&nbsp;<code>Data Structures</code>&nbsp;<code>Algorithms</code>&nbsp;
+
+# Approach
+
+## Brute Force
+Approach Explanation: The brute force approach iterates through each element of the array and counts its occurrences by traversing the array again. If the count of any element exceeds half the array length, it's considered the majority element.
+
+## Better Approach (Sorting)
+Approach Explanation: This approach sorts the array first, allowing the majority element to be found by examining the element at the middle index. If the count of the middle element exceeds half the array length, it's considered the majority element.
+
+## Optimal Algorithm (Moore's Voting Algorithm)
+Approach Explanation: Moore's Voting Algorithm finds the majority element efficiently in a single pass through the array. It first selects a candidate element and then verifies if it's the actual majority element by counting its occurrences in the array.
