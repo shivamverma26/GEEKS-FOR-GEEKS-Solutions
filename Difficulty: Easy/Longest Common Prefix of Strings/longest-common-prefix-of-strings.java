@@ -9,11 +9,10 @@ class GFG {
         BufferedReader read = new BufferedReader(new InputStreamReader(System.in));
         int t = Integer.parseInt(read.readLine());
         while (t-- > 0) {
-            int n = Integer.parseInt(read.readLine().trim());
             String arr[] = read.readLine().trim().split(" ");
 
             Solution ob = new Solution();
-            System.out.println(ob.longestCommonPrefix(n, arr));
+            System.out.println(ob.longestCommonPrefix(arr));
         }
     }
 }
@@ -23,7 +22,8 @@ class GFG {
 // User function Template for Java
 
 class Solution {
-    String longestCommonPrefix(int n, String strs[]) {
+    public String longestCommonPrefix(String strs[]) {
+        // code here
         if (strs == null || strs.length == 0) {
             return "-1";
         }
@@ -50,6 +50,7 @@ class Solution {
         }
 
         return prefix.length() == 0 ? "-1" : prefix.toString();
+    
     
     }
 }
