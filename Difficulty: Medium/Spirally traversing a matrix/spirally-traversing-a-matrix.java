@@ -1,29 +1,24 @@
 //{ Driver Code Starts
 import java.io.*;
 import java.util.*;
-class GFG
-{
-    public static void main(String args[])throws IOException
-    {
+
+class GFG {
+    public static void main(String args[]) throws IOException {
         Scanner sc = new Scanner(System.in);
         int t = sc.nextInt();
-        
-        while(t-- > 0)
-        {
+
+        while (t-- > 0) {
             int r = sc.nextInt();
             int c = sc.nextInt();
-            
+
             int matrix[][] = new int[r][c];
-            
-            for(int i = 0; i < r; i++)
-            {
-                for(int j = 0; j < c; j++)
-                 matrix[i][j] = sc.nextInt();
+
+            for (int i = 0; i < r; i++) {
+                for (int j = 0; j < c; j++) matrix[i][j] = sc.nextInt();
             }
             Solution ob = new Solution();
-            ArrayList<Integer> ans = ob.spirallyTraverse(matrix, r, c);
-            for (Integer val: ans) 
-                System.out.print(val+" "); 
+            ArrayList<Integer> ans = ob.spirallyTraverse(matrix);
+            for (Integer val : ans) System.out.print(val + " ");
             System.out.println();
         }
     }
@@ -31,13 +26,11 @@ class GFG
 // } Driver Code Ends
 
 
-class Solution
-{
-    //Function to return a list of integers denoting spiral traversal of matrix.
-    static ArrayList<Integer> spirallyTraverse(int mat[][], int r, int c)
-    {
-        // code here 
-         ArrayList<Integer> ans = new ArrayList<>();
+class Solution {
+    // Function to return a list of integers denoting spiral traversal of matrix.
+    public ArrayList<Integer> spirallyTraverse(int mat[][]) {
+        // code here
+          ArrayList<Integer> ans = new ArrayList<>();
          int n = mat.length; // no. of rows
         int m = mat[0].length; // no. of columns
         
@@ -76,7 +69,5 @@ class Solution
             }
         }
         return ans;
-    
-
     }
 }
