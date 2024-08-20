@@ -25,27 +25,35 @@ class GfG
 // } Driver Code Ends
 
 
+
+
 class Solution {
     private static final int MOD = (int) 1e9 + 7;
 
-    public int perfectSum(int arr[], int N, int sum) {
-        int[][] dp = new int[N + 1][sum + 1];
-
-        // Base case initialization
-        dp[0][0] = 1; // One way to make sum 0: by choosing the empty subset
-
-        // Fill the dp table
-        for (int i = 1; i <= N; i++) {
-            for (int j = 0; j <= sum; j++) {
-                dp[i][j] = dp[i - 1][j]; // Exclude current element
-
-                int remainder = j - arr[i - 1];
-                if (remainder >= 0) {
-                    dp[i][j] = (dp[i][j] + dp[i - 1][remainder]) % MOD; // Include current element
-                }
+    public int perfectSum(int nums[], int n, int sum) {
+        
+        int dp[][]=new int[n+1][sum+1];
+        
+        for(int j=0; j<sum+1; j++)
+        {
+            dp[0][j]=0;
+        }
+        
+        for(int i=0; i<n+1; i++)
+        {
+            dp[i][0]= 1;   
+        }
+        
+        for(int i=1; i<n+1; i++)
+        {
+            for(int j=0; j<sum+1; j++)
+            {
+               if(nums[i-1] <= j)
+                   dp[i][j] = (dp[i-1][j] + dp[i-1][j-nums[i-1]])%MOD;
+                else dp[i][j]= dp[i-1][j];
             }
         }
-
-        return dp[N][sum];
+        
+        return dp[n][sum];
     }
 }
