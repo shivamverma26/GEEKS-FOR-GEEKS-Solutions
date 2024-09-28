@@ -1,35 +1,18 @@
 //{ Driver Code Starts
-//Initial Template for Java
-
-import java.util.*;
-import java.lang.*;
+// Initial Template for Java
 import java.io.*;
+import java.lang.*;
+import java.util.*;
 
-class GFG{
-    public static void main(String args[]) throws IOException{
-        Scanner sc=new Scanner(System.in);
-        int t=sc.nextInt();
-        while(t-->0){
-            int N=sc.nextInt();
-            int K=sc.nextInt();
-            int []arr=new int[N];
-            for(int i=0;i<N;i++){
-                arr[i]=sc.nextInt();
-            }
-            Solution obj=new Solution();
-            int res=obj.minimizeCost(arr,N,K);
-            System.out.println(res);
-            
-        }
-    }
-}
+
 // } Driver Code Ends
 
 
 //User function Template for Java
 
 class Solution {
-    public int minimizeCost(int arr[], int N, int K) {
+     public int minimizeCost(int K, int arr[]) {
+         int N=arr.length;
         if (N == 0) return 0;
 
         // Initialize dp array to store the minimum cost to reach each index
@@ -48,3 +31,35 @@ class Solution {
         return dp[N - 1];
     }
 }
+
+
+//{ Driver Code Starts.
+
+class GFG {
+    public static void main(String[] args) throws IOException {
+        BufferedReader br = new BufferedReader(new InputStreamReader(System.in));
+        int t = Integer.parseInt(br.readLine());
+        while (t-- > 0) {
+            int k = Integer.parseInt(br.readLine());
+            String line = br.readLine();
+            String[] tokens = line.split(" ");
+
+            // Create an ArrayList to store the integers
+            ArrayList<Integer> array = new ArrayList<>();
+
+            // Parse the tokens into integers and add to the array
+            for (String token : tokens) {
+                array.add(Integer.parseInt(token));
+            }
+
+            int[] arr = new int[array.size()];
+            int idx = 0;
+            for (int i : array) arr[idx++] = i;
+            Solution obj = new Solution();
+            int res = obj.minimizeCost(k, arr);
+
+            System.out.println(res);
+        }
+    }
+}
+// } Driver Code Ends
