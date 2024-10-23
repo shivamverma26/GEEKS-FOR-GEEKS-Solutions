@@ -28,6 +28,20 @@ class Node {
 }
 */
 
+/*
+Node class is as follows:
+
+class Node {
+    int data;
+    Node next;
+
+    public Node (int data){
+        this.data = data;
+        this.next = null;
+    }
+}
+*/
+
 class Solution {
 
     // Return the sum of last k nodes
