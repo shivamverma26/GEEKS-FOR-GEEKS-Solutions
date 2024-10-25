@@ -28,12 +28,14 @@ class Main {
             for (int i = 0; i < v.size(); i++) System.out.print(v.get(i) + " ");
 
             System.out.println();
-            // System.out.println("~");c
+            System.out.println("~");
         }
     }
 }
 
 // } Driver Code Ends
+
+
 
 
 // User function Template for Java
@@ -42,20 +44,22 @@ class Solution {
     public static ArrayList<Integer> alternateSort(int[] arr) {
 
         // Your code goes here
+        int n=arr.length;
         Arrays.sort(arr);
         ArrayList<Integer> ans=new ArrayList<>();
         int i=0;
-        int j=arr.length-1;
+        int j=n-1;
         
-        while(i<=j){
-            if(i!=j){
+        while(i<j){
+            // if(i!=j){
                 ans.add(arr[j--]);
                 ans.add(arr[i++]);
-            }
-            else 
-            ans.add(arr[i++]);
+            // }
+            // else 
+            // ans.add(arr[i++]);
         }
-        
+        if(n%2==1)
+        ans.add(arr[i]);
         return ans;
     }
 }
