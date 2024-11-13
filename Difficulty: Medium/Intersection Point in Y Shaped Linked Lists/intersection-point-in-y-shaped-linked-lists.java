@@ -94,11 +94,15 @@ class LinkedList_Intersection {
             Intersect obj = new Intersect();
             System.out.println(obj.intersectPoint(head1, head2));
             t--;
-        }
+        
+System.out.println("~");
+}
     }
 }
 
 // } Driver Code Ends
+
+
 
 
 /* Node of a linked list
