@@ -2,21 +2,19 @@
 import java.io.*;
 import java.util.*;
 
-  public class Main {
+public class Main {
 
     public static void main(String[] args) throws Exception {
-        BufferedReader br =
-            new BufferedReader(new InputStreamReader(System.in));
+        BufferedReader br = new BufferedReader(new InputStreamReader(System.in));
         int tc = Integer.parseInt(br.readLine());
         while (tc-- > 0) {
-            int n = Integer.parseInt(br.readLine());
-            int[] arr = new int[n];
             String[] inputLine = br.readLine().split(" ");
+            int n = inputLine.length;
+            int[] arr = new int[n];
             for (int i = 0; i < n; i++) {
                 arr[i] = Integer.parseInt(inputLine[i]);
             }
-
-            System.out.println(new Solution().maxProduct(arr, n));
+            System.out.println(new Solution().maxProduct(arr));
         }
     }
 }
@@ -24,26 +22,28 @@ import java.util.*;
 // } Driver Code Ends
 
 
+
+
 class Solution {
     // Function to find maximum product subarray
-    long maxProduct(int[] arr, int n) {
+    int maxProduct(int[] arr) {
         // code here
-        long ans=Integer.MIN_VALUE;
-        for(int i=0;i<n;i++){
-                long prod=1;
-
-        for(int j=i;j<n;j++){
-            
-             prod*=arr[j];
-            ans=Math.max(prod,ans);
-            
-            if(ans==0) break;
-        }
-           
+        int n = arr.length;
+        int left = 1;
+        int right = 1;
+        int ans= arr[0];
+        
+        for(int i=0; i<n; i++){
+            if(left ==0){
+                left = 1;
+            }
+            if(right == 0){
+                right = 1;
+            }
+            left *= arr[i];
+            right *= arr[n-i-1];
+            ans = Math.max(ans, Math.max(left,right));
         }
         return ans;
-            
-        
-      
     }
 }
