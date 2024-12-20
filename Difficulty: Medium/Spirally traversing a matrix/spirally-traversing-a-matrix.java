@@ -20,6 +20,8 @@ class GFG {
             ArrayList<Integer> ans = ob.spirallyTraverse(matrix);
             for (Integer val : ans) System.out.print(val + " ");
             System.out.println();
+
+            System.out.println("~");
         }
     }
 }
@@ -30,7 +32,7 @@ class Solution {
     // Function to return a list of integers denoting spiral traversal of matrix.
     public ArrayList<Integer> spirallyTraverse(int mat[][]) {
         // code here
-          ArrayList<Integer> ans = new ArrayList<>();
+                  ArrayList<Integer> ans = new ArrayList<>();
          int n = mat.length; // no. of rows
         int m = mat[0].length; // no. of columns
         
@@ -69,5 +71,6 @@ class Solution {
             }
         }
         return ans;
+
     }
 }
