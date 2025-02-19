@@ -23,42 +23,38 @@ public class Main {
 
     // Driver program to test the above functions
     public static void main(String[] args) {
-        Scanner sc = new Scanner(System.in);
-        int t = sc.nextInt();
-        sc.nextLine(); // Consume newline
+        Scanner scanner = new Scanner(System.in);
+        int t = Integer.parseInt(scanner.nextLine());
+
         while (t-- > 0) {
-            List<Node> arr = new ArrayList<>();
-            List<Integer> nums = new ArrayList<>();
-            String input = sc.nextLine();
+            int n = Integer.parseInt(scanner.nextLine());
+            List<Node> lists = new ArrayList<>();
+            for (int i = 0; i < n; i++) {
+                String line = scanner.nextLine();
+                String[] values = line.split(" ");
+                Node head = null, temp = null;
 
-            Scanner ss = new Scanner(input);
-            while (ss.hasNextInt()) {
-                nums.add(ss.nextInt());
-            }
-            int ind = 0;
-            int N = nums.size();
-
-            while (ind < N) {
-                int n = nums.get(ind++);
-                int x = nums.get(ind++);
-                Node head = new Node(x);
-                Node curr = head;
-                n--;
-
-                for (int i = 0; i < n; i++) {
-                    x = nums.get(ind++);
-                    Node temp = new Node(x);
-                    curr.next = temp;
-                    curr = temp;
+                for (String value : values) {
+                    Node newNode = new Node(Integer.parseInt(value));
+                    if (head == null) {
+                        head = newNode;
+                        temp = head;
+                    } else {
+                        temp.next = newNode;
+                        temp = temp.next;
+                    }
                 }
-                arr.add(head);
+
+                lists.add(head);
             }
 
-            Solution obj = new Solution();
-            Node res = obj.mergeKLists(arr);
-            printList(res);
+            Solution sol = new Solution();
+            Node head = sol.mergeKLists(lists);
+
+            printList(head);
+            System.out.println("~");
         }
-        sc.close();
+        scanner.close();
     }
 }
 
@@ -81,44 +77,34 @@ public class Main {
 
 // arr is an array of Nodes of the heads of linked lists
 
-
-
 class Solution {
-    private Node mergeTwoLists(Node l1, Node l2) {
-        Node dummy = new Node(-1);
-        Node current = dummy;
-
-        while (l1 != null && l2 != null) {
-            if (l1.data <= l2.data) {
-                current.next = l1;
-                l1 = l1.next;
-            } else {
-                current.next = l2;
-                l2 = l2.next;
+    // Function to merge K sorted linked list.
+    Node mergeKLists(List<Node> arr) {
+        // Add your code here.
+        PriorityQueue<Node> pq=new PriorityQueue<>((a,b)->a.data-b.data);
+        for(Node n:arr)
+        {
+        if (n != null)
+        pq.add(n);
+        }
+        Node head=null,tail=null;
+        while(!pq.isEmpty())
+        {
+            Node temp=pq.poll();
+            if(head==null)
+            {
+                head=temp;
+                tail=temp;
             }
-            current = current.next;
+            else{
+                tail.next=temp;
+                tail=temp;
+            }
+            if(temp.next!=null)
+            {
+                pq.add(temp.next);
+            }
         }
-
-        if (l1 != null) {
-            current.next = l1;
-        }
-        if (l2 != null) {
-            current.next = l2;
-        }
-
-        return dummy.next;
+        return head;
     }
-
-    public Node mergeKLists(List<Node> lists) {
-        if (lists == null || lists.isEmpty()) {
-            return null;
-        }
-         Node newnode = lists.get(0);
-        
-        for(int i=1;i<lists.size();i++){
-            newnode=mergeTwoLists(newnode,lists.get(i));
-    }
-    return newnode;
-
-}
 }
